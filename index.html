@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Datos e información en gráficas</title>
+        <style>
+            body {
+                font-family: Roboto, Helvetica, Arial, sans-serif;
+                text-align: center;
+            }
+            div {
+                margin: 2vh 25vw 5vh 25vw;
+            }
+
+            @media (orientation: portrait) {
+                div {
+                    margin: 2vh 2vw 3vh 2vw;
+                }
+            }
+
+            div > svg {
+                margin: 1rem;
+            }
+
+            div > p {
+                margin: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <clipPath id="monki">
+                        <path
+                            d="M91.33,88.22H8.92c-2.22,0-3.57-1.23-3.57-3a4.63,4.63,0,0,1,.61-2L17.77,62.51c5.17-9,16.36-13.9,27.06-13.9,11.57,0,17.35,5.54,17.35,10.46,0,4.3-3.32,7.13-6.77,8.12H53.07a3.49,3.49,0,0,0-3.56-3.82,3.42,3.42,0,0,0-3.32,3.45c0,3.81,4.79,7.5,13.16,7.5,7.75,0,18-3.57,24.6-9.1L94.28,83.3a3.51,3.51,0,0,1,.37,1.84A3,3,0,0,1,91.33,88.22Zm-10.21-28L52.71,10.36a3.19,3.19,0,0,0-5.66,0L26.14,47.51a36.15,36.15,0,0,1,12.67-4.06L49.88,23.89,73.37,64.36A19.72,19.72,0,0,0,81.12,60.17Z"
+                        />
+                    </clipPath>
+                </defs>
+                <image height="100%" width="100%" preserveAspectRatio="xMinYMin slice" xlink:href="tsunami.jpg" clip-path="url(#monki)" />
+            </svg>
+
+            <p>
+                Usando <a href="https://www.guemil.info/" target="_blank">Guemil</a> para una doble representación; el <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths" target="_blank">path</a> que recorta es una
+                representación y la <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image" target="_blank">image</a> recortada es otra.
+            </p>
+
+            <svg viewBox="0 0 42 42">
+                <circle cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
+                <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#c7d4d9" stroke-width="2"></circle>
+                <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#0080a3" stroke-width="2" stroke-dasharray="79 21" stroke-dashoffset="25"></circle>
+                <text x="50%" y="29" dominant-baseline="middle" text-anchor="middle" font-size="6" fill="#0080a3">71%</text>
+                <image x="13" y="10" width="15" height="15" xlink:href="https://raw.githubusercontent.com/Guemil/Guemil_Icons_v15_2020/main/svg/26_Warning_tsunami_v15.svg"></image>
+            </svg>
+
+            <p>
+                Entre las personas consultadas, un 71% refiere a la semejanza de lo visto con PELIGRO DE TSUNAMI (lo que se está representando). El dato de éxito de la referencia también se podría presentar, si se aproxima a 7 en 10, como sigue:
+            </p>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 24" id="personas"></svg>
+
+            <p>En la presentación gráfica del dato de 7 en 10 se utilizó un <a href="https://datavizcatalogue.com/ES/metodos/grafico_de_pictogramas.html" target="_blank">Gráfico de pictogramas</a></p>
+        </div>
+        <script>
+            for (let x = 0; x < 10; x++) {
+                if (x < 7) {
+                    document.querySelector("#personas").innerHTML += `
+            <g transform="translate(${x*24}, 0)" fill="none" stroke="#0080a3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9" ></polyline>
+            </g>
+            `;
+                } else {
+                    document.querySelector("#personas").innerHTML += `  
+                    	<g transform="translate(${x*24}, 0)" fill="none" stroke="#c7d4d9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="23" y1="11" x2="17" y2="11"></line>
+            </g>`
+                }
+            }
+        </script>
+    </body>
+</html>
